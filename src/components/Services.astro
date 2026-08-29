@@ -1,0 +1,169 @@
+---
+// src/components/Services.astro
+const services = [
+    {
+        title: "¿Quiere asegurar su pedido?",
+        description: "Garantizamos la elavoración y entrega de sus productos desde que se realiza el 50% del pago total.",
+        icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+        gradient: "from-yeso-teal to-slate-800",
+        delay: "0s",
+        align: "self-start md:-ml-4 z-10"
+    },
+    {
+        title: "Entragas por pedido",
+        description: "Piezas delicadas, para bautizos, primeras comuniones, bodas y festejos, etc.",
+        icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+        gradient: "from-yeso-terra to-orange-800",
+        delay: "-2s",
+        align: "self-end md:-mr-4 md:-mt-20 z-20"
+    },
+    {
+        title: "Venta al Mayoreo",
+        description: "Apartir de 20 piezas usted obtiene descuentos especiales, incluso pueden no ser del mismo modelo.",
+        icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+        gradient: "from-slate-800 to-yeso-teal",
+        delay: "-4s",
+        align: "self-center md:-ml-20 md:-mt-2 z-30"
+    }
+];
+
+// Imágenes decorativas para rellenar los espacios vacíos entre los blobs.
+// Reemplaza estas rutas por tus 3 imágenes ya sin fondo.
+const decorations = [
+    {
+        src: "/decoracion-1.png",
+        alt: "Figura decorativa de yeso 1",
+        // Espacio vacío a la derecha del primer blob (que está pegado a la izquierda)
+        position: "hidden md:block absolute top-[-2rem] right-[4%] w-40 lg:w-52 z-0",
+        delay: "-1s"
+    },
+    {
+        src: "/decoracion-2.png",
+        alt: "Figura decorativa de yeso 2",
+        // Espacio vacío a la izquierda del segundo blob (que está pegado a la derecha)
+        position: "hidden md:block absolute top-[40%] left-[-15%] w-36 lg:w-48 z-0",
+        delay: "-3s"
+    },
+    {
+        src: "/decoracion-3.png",
+        alt: "Figura decorativa de yeso 3",
+        // Espacio vacío a la derecha del tercer blob (centrado con -ml-20)
+        position: "hidden md:block absolute bottom-[-1rem] right-[-12%] w-44 lg:w-56 z-0",
+        delay: "-5s"
+    }
+];
+---
+<section class="py-24 bg-yeso-cream overflow-hidden" id="servicios">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Encabezado -->
+        <div class="text-center mb-24 relative z-40">
+            <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight">
+                Soluciones a tu medida
+            </h2>
+        </div>
+        
+        <!-- Contenedor Orgánico de Servicios -->
+        <div class="flex flex-col gap-12 md:gap-0 mb-32 relative">
+
+            <!-- Imágenes decorativas flotando en los espacios vacíos -->
+            {decorations.map(deco => (
+                <img
+                    src={deco.src}
+                    alt={deco.alt}
+                    class={`${deco.position} object-contain floating-img drop-shadow-[0_20px_25px_rgba(0,0,0,0.2)] pointer-events-none`}
+                    style={`animation-delay: ${deco.delay};`}
+                />
+            ))}
+
+            {services.map(service => (
+                <div 
+                    class={`blob-shape relative p-12 md:p-16 w-full md:w-[65%] shadow-2xl backdrop-blur-sm bg-gradient-to-br ${service.gradient} text-white ${service.align}`}
+                    style={`animation-delay: ${service.delay};`}
+                >
+                    <div class="relative z-10 flex flex-col items-start">
+                        <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-6 backdrop-blur-md border border-white/20">
+                            <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={service.icon}></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-4">{service.title}</h3>
+                        <p class="text-white/80 leading-relaxed text-lg font-light">{service.description}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+
+        <!-- Banner Orgánico -->
+        <div class="blob-banner relative p-10 md:p-16 lg:p-24 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 shadow-2xl text-white flex flex-col md:flex-row items-center justify-between z-40">
+            
+            <div class="w-full md:w-3/5 z-10 mb-12 md:mb-0">
+                <h3 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">¿No encontro lo que buscaba?</h3>
+                <p class="text-slate-300 mb-10 font-light leading-relaxed text-xl max-w-xl">
+                Conseguimos el model de la figura que necesite, incluso si no está en nuestro catálogo. Contáctenos y haremos todo lo posible por ayudarle.
+                </p>
+                <a href="https://wa.me/522941025503" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 text-sm font-bold rounded-full hover:bg-yeso-terra hover:text-white transition-all duration-300 transform hover:scale-105">
+                    Cotizar temáticas por WhatsApp
+                </a>
+            </div>
+
+
+            <!-- Imagen con flotación permanente -->
+            <div class="w-full md:w-2/5 relative flex justify-center items-center z-10">
+                <img 
+                    src="/Buho.png" 
+                    alt="Balones de yeso para pintar" 
+                    class="relative z-20 w-[130%] max-w-[450px] object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.6)] floating-img"
+                />
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    /* 1. Animación principal: Cambia la forma (Blob) y flota arriba/abajo */
+    .blob-shape {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        animation: morphing 10s ease-in-out infinite, floating 6s ease-in-out infinite;
+    }
+
+
+    /* 2. Banner inferior: Forma más alargada pero igual de fluida */
+    .blob-banner {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        animation: morphing-banner 15s ease-in-out infinite;
+    }
+
+
+    /* 3. La imagen de los balones flota rápido y por su cuenta */
+    .floating-img {
+        animation: floating 4s ease-in-out infinite;
+    }
+
+
+    /* --- KEYFRAMES (La magia del movimiento) --- */
+    
+    /* Muta los valores del border-radius para simular líquido/gelatina */
+    @keyframes morphing {
+        0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+        34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+        67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+        100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    }
+
+
+    @keyframes morphing-banner {
+        0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        50% { border-radius: 50% 50% 30% 70% / 50% 40% 60% 60%; }
+        100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    }
+
+
+    /* Levanta y baja el elemento de forma suave y perpetua */
+    @keyframes floating {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+</style>

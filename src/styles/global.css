@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Definimos nuestra paleta personalizada */
+@theme{
+  --color-yeso-teal: #249D8F;
+  --color-yeso-gold: #E9C46A;
+  --color-yeso-terra: #E76F51;
+  --color-yeso-cream: #FDF0D5;
+}

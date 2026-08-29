@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro'; // ¡Lo traemos al molde!
+import Footer from '../components/Footer.astro'; // ¡Lo traemos al molde!
+
+interface Props{
+    title: string;
+    description: string;
+    image?: string; 
+}
+
+const { 
+    title, 
+    description, 
+    image = '/og-image.jpg' 
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url);
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={new URL(image, Astro.url)} />
+
+        <meta name="theme-color" content="#ffffff" />
+    </head>
+    <body class="bg-yeso-cream text-slate-800 font-sans antialiased selection:bg-yeso-gold selection:text-slate-900 flex flex-col min-h-screen">
+        
+        <!-- 1. La navegación siempre estará arriba -->
+        <Header/> 
+
+        <!-- 2. El contenido de cada página entrará aquí, con su margen para que no lo tape el Header -->
+        <main class="pt-20 flex-grow">
+            <slot/> 
+        </main>
+
+        <!-- 3. El pie de página con tu gancho para atraer clientes siempre estará abajo -->
+        <Footer/> 
+
+    </body>
+</html>
