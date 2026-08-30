@@ -8,7 +8,7 @@
         <!-- En móvil: blur-md difumina TODA la imagen + scale-110 la agranda un poco -->
         <!-- En desktop (md+): blur-none y scale-100 regresan la imagen a su estado original -->
         <img 
-            src="/fondo-limpio.jpg" 
+            src="/src/assets/fondo-limpio.jpg" 
             alt="Taller de arte en yeso" 
             class="w-full h-full object-contain object-right origin-right scale-110 md:scale-100 blur-md md:blur-none"
         />
@@ -23,7 +23,7 @@
     <!-- 2. CAPA 2: La Virgen Flotante GRANDE (SOLO en desktop/tablet, oculta en móvil) -->
     <div class="absolute inset-0 z-10 pointer-events-none hidden md:block">
         <img 
-            src="/virgen-transparente.png" 
+            src="/src/assets/virgen-transparente.png" 
             alt="Figura de yeso Virgencita" 
             class="w-full h-full object-contain object-right hero-floating drop-shadow-[0_20px_30px_rgba(0,0,0,0.25)]"
         />
@@ -36,7 +36,7 @@
 
             <!-- Virgencita GRANDE flotando de fondo, detrás del texto, SOLO en móvil (10x más grande que el ícono anterior) -->
             <img 
-                src="/virgen-transparente.png" 
+                src="/src/assets/virgen-transparente.png" 
                 alt="Figura de yeso Virgencita" 
                 class="absolute -top-45 -right-10 w-[330px] h-[330px] object-contain hero-floating drop-shadow-[0_15px_20px_rgba(0,0,0,0.2)] pointer-events-none -z-10 md:hidden"
             />
