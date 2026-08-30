@@ -1,45 +1,55 @@
 ---
 // src/components/Hero.astro
+
+import fondoLimpio from '../assets/fondo-limpio.jpg';
+import virgenTransparente from '../assets/virgen-transparente.png';
 ---
+
 <section class="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-yeso-cream">
+
 
     <!-- 1. CAPA 1: El Fondo Limpio Estático -->
     <div class="absolute inset-0 z-0">
         <!-- En móvil: blur-md difumina TODA la imagen + scale-110 la agranda un poco -->
         <!-- En desktop (md+): blur-none y scale-100 regresan la imagen a su estado original -->
         <img 
-            src="/src/assets/fondo-limpio.jpg" 
+            src={fondoLimpio.src}
             alt="Taller de arte en yeso" 
             class="w-full h-full object-contain object-right origin-right scale-110 md:scale-100 blur-md md:blur-none"
         />
         <!-- Máscara de fundido horizontal: 100% sólido a la izquierda, desapareciendo hacia la derecha -->
         <div class="absolute inset-0 bg-gradient-to-r from-yeso-cream from-45% via-yeso-cream/90 via-55% to-transparent"></div>
 
+
         <!-- Velo extra SOLO en móvil, para dar contraste ya que el fondo está difuminado -->
         <div class="absolute inset-0 bg-yeso-cream/50 md:hidden"></div>
     </div>
 
 
+
     <!-- 2. CAPA 2: La Virgen Flotante GRANDE (SOLO en desktop/tablet, oculta en móvil) -->
     <div class="absolute inset-0 z-10 pointer-events-none hidden md:block">
         <img 
-            src="/src/assets/virgen-transparente.png" 
+            src={virgenTransparente.src}
             alt="Figura de yeso Virgencita" 
             class="w-full h-full object-contain object-right hero-floating drop-shadow-[0_20px_30px_rgba(0,0,0,0.25)]"
         />
     </div>
 
 
+
     <!-- 3. CAPA 3: Textos e Interfaz -->
     <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20 pb-16">
         <div class="max-w-xl relative">
 
+
             <!-- Virgencita GRANDE flotando de fondo, detrás del texto, SOLO en móvil (10x más grande que el ícono anterior) -->
             <img 
-                src="/src/assets/virgen-transparente.png" 
+                src={virgenTransparente.src}
                 alt="Figura de yeso Virgencita" 
-                class="absolute -top-45 -right-10 w-[330px] h-[330px] object-contain hero-floating drop-shadow-[0_15px_20px_rgba(0,0,0,0.2)] pointer-events-none -z-10 md:hidden"
+                class="absolute -top-45s -right-10 w-[330px] h-[330px] object-contain hero-floating drop-shadow-[0_15px_20px_rgba(0,0,0,0.2)] pointer-events-none -z-10 md:hidden"
             />
+
 
             <div class="flex items-center gap-4 mb-6">
                 <span class="w-8 h-[2px] bg-yeso-teal"></span>
@@ -68,10 +78,12 @@
 </section>
 
 
+
 <style>
     .hero-floating {
         animation: floatHero 6s ease-in-out infinite;
     }
+
 
 
     @keyframes floatHero {
