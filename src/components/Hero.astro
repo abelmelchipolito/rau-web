@@ -1,5 +1,9 @@
 ---
 // src/components/Hero.astro
+import fondoLimpio from '../assets/fondo-limpio.jpg';
+import virgenTransparente from '../assets/virgen-transparente.png';
+import buho from '../assets/Buho.png';
+
 ---
 <section class="relative w-full min-h-[85vh] flex items-center overflow-hidden bg-yeso-cream">
 
@@ -8,7 +12,7 @@
         <!-- En móvil: blur-md difumina TODA la imagen + scale-110 la agranda un poco -->
         <!-- En desktop (md+): blur-none y scale-100 regresan la imagen a su estado original -->
         <img 
-            src="/src/assets/fondo-limpio.jpg" 
+            <img src="/fondo-limpio.jpg" alt="Fondo" />
             alt="Taller de arte en yeso" 
             class="w-full h-full object-contain object-right origin-right scale-110 md:scale-100 blur-md md:blur-none"
         />
